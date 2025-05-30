@@ -1,4 +1,5 @@
 from stats import get_num_words,get_letter_dict,get_sorted_letter_list
+import sys
 
 def get_book_text(filepath) -> str:
     with open(filepath) as f:
@@ -21,6 +22,9 @@ def get_report(filepath) -> str:
     return result
 
 def main():
-    print(get_report("books/frankenstein.txt"))
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        exit(1)
+    print(get_report(sys.argv[1]))
 
 main()
